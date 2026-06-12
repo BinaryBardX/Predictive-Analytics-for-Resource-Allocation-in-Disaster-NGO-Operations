@@ -2,9 +2,18 @@
 
 ## Assam Flood Relief Ration Kit Forecasting
 
-This project is an AI/ML-based disaster resource allocation system designed to support NGOs and district disaster-response teams in Assam. It forecasts where and how many flood-relief ration kits may be required using rainfall, demographic, flood-proneness, and accessibility indicators.
+This project is an AI/ML-based disaster resource allocation system for forecasting district-wise flood relief ration-kit demand in Assam.
 
-The system combines historical rainfall analysis, machine learning allocation models, time-series forecasting, geospatial visualization, and a 7-day forward rainfall forecast signal.
+It combines:
+
+- historical IMD rainfall data
+- district demographic indicators
+- flood-proneness indicators
+- road accessibility proxy
+- Prophet time-series forecasting
+- Random Forest allocation modeling
+- GeoPandas + Folium geospatial visualization
+- Open-Meteo 7-day rainfall forecast signal
 
 ---
 
@@ -17,30 +26,57 @@ https://cvqfqhaxkeetvtfru7roan.streamlit.app/
 
 ## Problem Statement
 
-Floods in Assam cause recurring displacement, food insecurity, and disruption of road connectivity. Relief organizations often respond after flood impacts are already visible, which delays supply delivery.
+Assam faces recurring floods that disrupt food supply, transport, housing, and healthcare access. NGOs and district authorities often face difficulty deciding where to pre-position relief supplies.
 
-This project aims to predict district-wise ration-kit demand so that NGOs can pre-position supplies before flood impacts peak.
+This project forecasts:
+
+- which districts may need relief
+- how many ration kits may be required
+- which areas should be prioritized
+- what action NGOs should take
 
 ---
 
-## Objectives
+## Dataset Sources
 
-- Forecast district-wise ration-kit demand for Assam.
-- Identify high-risk districts requiring urgent relief support.
-- Use rainfall, population, flood vulnerability, and accessibility indicators.
-- Provide an interactive dashboard for NGOs.
-- Generate a 7-day forward resource forecast using rainfall forecast data.
-- Visualize demand geographically using Folium maps.
+| Dataset / Data Component | Source | Usage |
+|---|---|---|
+| Historical monthly rainfall | IMD rainfall dataset, 1901–2015 | Climatic input |
+| Assam district population | Census 2011-based district reference | Exposure estimation |
+| District area | District reference data | Population density calculation |
+| Flood frequency score | Flood-proneness / historical incident proxy | Vulnerability indicator |
+| Road accessibility index | Terrain and accessibility proxy | Logistics difficulty indicator |
+| Assam district boundaries | India district GeoJSON | GeoPandas/Folium district map |
+| 7-day rainfall forecast | Open-Meteo Forecast API | Forward-looking rainfall signal |
+| Relief demand target | Humanitarian planning proxy | Model target |
+
+---
+
+## Important Dataset Note
+
+Public district-level NGO ration distribution records are not readily available. Therefore, the target variable `ration_kits_needed` is constructed as a proxy using humanitarian planning assumptions.
+
+The proxy target considers:
+
+- rainfall intensity
+- flood frequency
+- population exposure
+- road accessibility
+- monsoon effect
+
+Assumption:
+
+> One ration kit supports approximately one household of five people.
 
 ---
 
 ## Models Used
 
-### Primary Forecasting Model
+### 1. Prophet Forecasting Model
 
-**Prophet**
+Prophet is used as the **primary time-series forecasting model**.
 
-Used for strategic time-series forecasting of average monthly relief demand.
+It forecasts strategic monthly relief demand trends based on historical demand patterns.
 
 Hold-out performance:
 
@@ -50,158 +86,74 @@ Hold-out performance:
 | RMSE | 413.55 |
 | MAPE | 6.20% |
 
-This satisfies the target condition of forecast MAPE below 20%.
+This satisfies the target condition:
 
-### Primary Allocation Model
+> Forecast MAPE below 20% on hold-out historical data.
 
-**Random Forest Regressor**
+---
 
-Used for district-level ration-kit allocation based on climatic, demographic, vulnerability, and accessibility features.
+### 2. Random Forest Allocation Model
 
-### Comparison Models
+Random Forest is used as the **primary district-level allocation model**.
+
+It predicts ration-kit requirements using:
+
+- rainfall
+- rainfall lag features
+- rolling rainfall features
+- population
+- population density
+- flood frequency score
+- road accessibility index
+- flood severity
+- district encoding
+- month and quarter
+
+Random Forest is used for operational allocation because it can ingest climatic, demographic, and vulnerability features.
+
+---
+
+### 3. Model Comparison
+
+The following models were compared:
 
 - Random Forest Regressor
 - XGBoost Regressor
 - LightGBM Regressor
-
----
-
-## Dataset Description
-
-The project uses a combined district-month dataset created from:
-
-- IMD historical rainfall data
-- Assam district population and area indicators
-- Flood-frequency vulnerability score
-- Road accessibility proxy
-- District-level rainfall adjustment factors
-- Open-Meteo 7-day rainfall forecast data
-
-Due to the lack of publicly available district-level NGO relief distribution records, the target variable `ration_kits_needed` is constructed using humanitarian planning assumptions.
-
----
-
-## Target Variable Strategy
-
-The target variable estimates ration-kit demand using:
-
-- rainfall intensity
-- flood-proneness
-- population exposure
-- road accessibility
-- monsoon season effect
-
-Assumption:
-
-> One ration kit supports approximately one household of five people.
-
-This target is a planning proxy, not an official NGO distribution record.
+- Prophet forecasting baseline
 
 ---
 
 ## Feature Engineering
 
-The following features were created:
+Created features include:
 
 - district rainfall
-- rainfall lag features
+- rainfall lag 1, 2, and 3
 - rolling 3-month rainfall
 - rolling 6-month rainfall
-- flood severity score
+- month number
+- quarter
 - monsoon flag
+- flood severity score
 - population density
 - road accessibility index
-- flood frequency score
 - encoded district variable
-- month and quarter features
 
 ---
 
-## Forward 7-Day Forecasting
+## 7-Day Forward Forecasting
 
-The dashboard includes a forward-looking rainfall signal.
+The system fetches or uses saved Open-Meteo 7-day rainfall forecast data for Assam district coordinates.
 
-Open-Meteo API is used to fetch 7-day rainfall forecast data for Assam district coordinates. This forecast rainfall is then converted into the same feature structure used by the Random Forest allocation model.
-
-The model predicts:
-
-- 7-day ration-kit demand
-- district risk level
-- recommended NGO action
-
----
-
-## Dashboard Features
-
-The Streamlit dashboard includes:
-
-- district selector
-- 7-day rainfall forecast display
-- predicted ration-kit demand
-- risk-level classification
-- district-wise forward forecast table
-- Prophet 12-month strategic forecast
-- Random Forest feature importance
-- model comparison table
-- interactive Assam district map
-- NGO action recommendations
-
----
-
-## Geospatial Analysis
-
-GeoPandas and Folium are used to create an Assam district-level risk map.
-
-The map visualizes:
-
-- predicted ration-kit demand
-- risk level
-- rainfall
-- flood severity
-- district-wise relief priority
-
----
-
-## NGO Operational Playbook
-
-### Low Risk
-
-- Continue rainfall monitoring.
-- Maintain basic buffer stock.
-- No immediate mobilization required.
-
-### Medium Risk
-
-- Pre-position ration kits at block-level storage points.
-- Alert local volunteer networks.
-- Monitor rainfall and road accessibility.
-
-### High Risk
-
-- Mobilize district-level relief teams.
-- Arrange transport and warehouse space.
-- Prepare ration kits for rapid deployment.
-
-### Severe Risk
-
-- Immediate pre-positioning required.
-- Coordinate with district administration.
-- Activate multi-agency emergency response.
-- Prioritize vulnerable and low-accessibility areas.
-
----
-
-## Project Structure
+The workflow is:
 
 ```text
-.
-├── app.py
-├── README.md
-├── requirements.txt
-├── ngo_resource_forecast.csv
-├── forward_7day_resource_forecast.csv
-├── real_7day_rainfall_forecast.csv
-├── prophet_forecast_12_months.csv
-├── feature_importance.csv
-├── model_comparison.csv
-├── assam_district_risk_map.html
+7-day rainfall forecast
++ district demographic features
++ flood-proneness indicators
++ accessibility indicators
+↓
+Random Forest allocation model
+↓
+Forward 7-day ration-kit demand
