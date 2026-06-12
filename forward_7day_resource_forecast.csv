@@ -1,0 +1,28 @@
+district,district_rainfall,flood_severity,population_2011,predicted_ration_kits,risk_level,recommended_trucks,recommended_volunteers,recommended_storage_tons,forecast_7day_rainfall_mm,rainfall_forecast_factor,forward_7day_ration_kits,forward_7day_risk,recommended_action
+Nagaon,10.488,2.2989291456132293,2823768,8926.47,Severe,9.0,36.0,89.26,53.1,1.177,10506,Severe,Immediate pre-positioning and multi-agency emergency coordination.
+Dhubri,13.68,2.313820624712908,1949258,6189.105,High,7.0,25.0,61.89,175.8,1.586,9816,Severe,Immediate pre-positioning and multi-agency emergency coordination.
+Sonitpur,15.96,2.0744573954983925,1924110,5955.19,High,6.0,24.0,59.55,111.89999999999999,1.373,8176,Severe,Immediate pre-positioning and multi-agency emergency coordination.
+Cachar,18.544,1.586512402388608,1736617,4495.715,Medium,5.0,18.0,44.96,207.89999999999998,1.693,7611,High,"Mobilize transport, volunteers, and district-level relief teams."
+Barpeta,12.92,2.31027503445108,1693622,5371.875,High,6.0,22.0,53.72,94.3,1.3143333333333334,7060,High,"Mobilize transport, volunteers, and district-level relief teams."
+Dibrugarh,17.024,1.829421221864952,1326335,3776.915,Medium,4.0,16.0,37.77,160.9,1.5363333333333333,5803,High,"Mobilize transport, volunteers, and district-level relief teams."
+Tinsukia,16.568,1.577293867707855,1327929,3477.825,Medium,4.0,14.0,34.78,168.2,1.5606666666666666,5428,High,"Mobilize transport, volunteers, and district-level relief teams."
+Lakhimpur,17.176,2.580130339917317,1042137,3692.065,Medium,4.0,15.0,36.92,102.8,1.3426666666666667,4957,Medium,Pre-position ration kits at block-level storage points.
+Kamrup,10.488,1.7989291456132293,1517542,4220.01,Medium,5.0,17.0,42.2,42.199999999999996,1.1406666666666667,4814,Medium,Pre-position ration kits at block-level storage points.
+Karimganj,21.28,1.3492765273311895,1228686,2811.78,Medium,3.0,12.0,28.12,207.7,1.6923333333333332,4758,Medium,Pre-position ration kits at block-level storage points.
+Sivasagar,13.528,1.563111506660542,1151050,2965.09,Medium,3.0,12.0,29.65,154.3,1.5143333333333335,4490,Medium,Pre-position ration kits at block-level storage points.
+Golaghat,13.68,2.063820624712908,1066888,3320.955,Medium,4.0,14.0,33.21,103.9,1.3463333333333334,4471,Medium,Pre-position ration kits at block-level storage points.
+Goalpara,14.287999999999998,2.0666570969223703,1008183,3034.08,Medium,4.0,13.0,30.34,118.7,1.3956666666666666,4235,Medium,Pre-position ration kits at block-level storage points.
+Jorhat,12.312,1.5574385622416167,1092256,2826.885,Medium,3.0,12.0,28.27,132.9,1.443,4079,Medium,Pre-position ration kits at block-level storage points.
+Dhemaji,18.544,2.586512402388608,686133,2518.995,Medium,3.0,11.0,25.19,180.7,1.6023333333333332,4036,Medium,Pre-position ration kits at block-level storage points.
+Marigaon,9.88,2.2960926734037668,957423,3060.085,Medium,4.0,13.0,30.6,44.9,1.1496666666666666,3518,Medium,Pre-position ration kits at block-level storage points.
+Bongaigaon,14.744,1.818784451079467,738804,2013.98,Medium,3.0,9.0,20.14,193.29999999999998,1.6443333333333334,3312,Medium,Pre-position ration kits at block-level storage points.
+Kokrajhar,17.784,1.33296681212678,887142,2136.455,Medium,3.0,9.0,21.36,161.0,1.5366666666666666,3283,Medium,Pre-position ration kits at block-level storage points.
+Baksa,12.92,1.5602750344510794,950075,2459.995,Medium,3.0,10.0,24.6,84.8,1.2826666666666666,3155,Medium,Pre-position ration kits at block-level storage points.
+Darrang,11.856,2.05531120808452,928500,2771.01,Medium,3.0,12.0,27.71,39.6,1.1320000000000001,3137,Medium,Pre-position ration kits at block-level storage points.
+Udalguri,17.176,1.8301303399173168,831668,2362.2,Medium,3.0,10.0,23.62,80.6,1.2686666666666666,2997,Medium,Pre-position ration kits at block-level storage points.
+Kamrup Metropolitan,9.88,1.0460926734037668,1253938,2471.08,Medium,3.0,10.0,24.71,38.7,1.129,2790,Medium,Pre-position ration kits at block-level storage points.
+Nalbari,11.096,1.801765617822692,771639,2083.84,Medium,3.0,9.0,20.84,76.6,1.2553333333333332,2616,Medium,Pre-position ration kits at block-level storage points.
+Hailakandi,19.76,1.3421853468075335,659296,1543.99,Low,2.0,7.0,15.44,191.8,1.6393333333333335,2531,Medium,Pre-position ration kits at block-level storage points.
+Karbi Anglong,11.096,0.8017656178226917,956313,1943.005,Low,2.0,8.0,19.43,47.900000000000006,1.1596666666666666,2253,Medium,Pre-position ration kits at block-level storage points.
+Chirang,16.72,1.3280029857602205,482162,1161.965,Low,2.0,5.0,11.62,161.5,1.5383333333333333,1787,Low,Monitor rainfall and maintain buffer stock.
+Dima Hasao,11.856,0.5553112080845201,214102,388.995,Low,1.0,2.0,3.89,131.5,1.4383333333333335,560,Low,Monitor rainfall and maintain buffer stock.
