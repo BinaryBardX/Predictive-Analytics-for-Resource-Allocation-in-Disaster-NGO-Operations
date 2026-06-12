@@ -1,0 +1,15 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+xgboost
+lightgbm
+prophet
+joblib
+geopandas
+folium
+plotly
+streamlit
+streamlit-folium
+mapclassify
