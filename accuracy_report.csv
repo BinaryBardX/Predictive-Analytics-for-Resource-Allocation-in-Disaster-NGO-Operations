@@ -1,0 +1,5 @@
+Model,MAE,RMSE,MAPE (%),R2
+Random Forest,4.91,34.16,0.09,0.9998
+XGBoost,10.65,40.66,0.22,0.9997
+LightGBM,21.33,44.93,0.51,0.9997
+Prophet,302.8,413.55,6.2,
